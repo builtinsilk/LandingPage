@@ -133,6 +133,7 @@ a:focus-visible, button:focus-visible, input:focus-visible{
 
 .main-nav{
   display: flex;
+  align-items: center;
   gap: 2rem;
   flex: 1;
   justify-content: center;
@@ -160,18 +161,57 @@ a:focus-visible, button:focus-visible, input:focus-visible{
   .main-nav{ display: none; }
 }
 
+/* --- Nav dropdowns (Signatures / The Silk Room) --- */
+.nav-item{
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.dropdown{
+  list-style: none;
+  margin: 0;
+  padding: 0.5rem 0;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(6px);
+  background: var(--paper);
+  border: 1px solid var(--line);
+  min-width: 220px;
+  box-shadow: 0 14px 28px rgba(27,24,21,0.10);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+  z-index: 30;
+}
+
+.nav-item:hover .dropdown,
+.nav-item:focus-within .dropdown{
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+.dropdown li{ border: none; }
+
+.dropdown a{
+  display: block;
+  padding: 0.6em 1.3em;
+  font-size: 0.86rem;
+  font-weight: 400;
+  color: var(--ink-soft);
+  white-space: nowrap;
+}
+.dropdown a::after{ content: none; }
+.dropdown a:hover{ color: var(--gold); background: var(--paper-deep); }
+
 /* ---------------------------------------------------
    Hero
 --------------------------------------------------- */
 .hero{ padding: clamp(3rem, 8vw, 6rem) 0 clamp(2.5rem, 6vw, 4rem); }
 .hero-grid{
-  display: grid;
-  grid-template-columns: 1.4fr 1fr;
-  gap: clamp(2rem, 5vw, 5rem);
-  align-items: start;
-}
-@media (max-width: 900px){
-  .hero-grid{ grid-template-columns: 1fr; }
+  max-width: 720px;
 }
 
 .eyebrow{
@@ -189,44 +229,7 @@ a:focus-visible, button:focus-visible, input:focus-visible{
 @keyframes rise{
   from{ opacity: 0; transform: translateY(14px); }
   to{ opacity: 1; transform: translateY(0); }
-}
-
-.week-strip{
-  background: var(--ink);
-  color: var(--paper);
-  padding: 2rem clamp(1.4rem, 3vw, 2.2rem);
-  border-radius: 2px;
-  animation: rise 0.8s 0.2s ease both;
-}
-.week-strip h2{
-  font-family: var(--sans);
-  font-size: 0.85rem;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  color: var(--silk);
-  margin-bottom: 1.2em;
-}
-.week-list{
-  list-style: none;
-  margin: 0; padding: 0;
-}
-.week-list li{
-  display: flex;
-  gap: 1rem;
-  padding: 0.7em 0;
-  border-top: 1px solid rgba(241,233,218,0.16);
-  font-size: 0.93rem;
-}
-.week-list li:first-child{ border-top: none; }
-.day{
-  font-family: var(--serif);
-  font-style: italic;
-  color: var(--silk);
-  min-width: 3.2em;
-  flex-shrink: 0;
-}
-.day-sunday{ color: var(--gold); }
-.week-desc{ color: rgba(241,233,218,0.86); }
+} 
 
 /* ---------------------------------------------------
    Essence (BUILT + SILK)
@@ -319,6 +322,7 @@ a:focus-visible, button:focus-visible, input:focus-visible{
   gap: 1.2rem;
   padding: 1.4em 0;
   border-top: 1px solid var(--line);
+  scroll-margin-top: 6rem;
 }
 @media (max-width: 780px){
   .franchise-index{ grid-template-columns: 1fr; }
@@ -377,6 +381,7 @@ a:focus-visible, button:focus-visible, input:focus-visible{
   padding: 0.5em 1.1em;
   font-size: 0.9rem;
   font-weight: 500;
+  scroll-margin-top: 6rem;
 }
 .room-note{ color: var(--sage); font-style: italic; font-family: var(--serif); }
 
@@ -427,7 +432,21 @@ a:focus-visible, button:focus-visible, input:focus-visible{
   color: var(--ink-soft);
   margin-bottom: 1.4rem;
 }
-.footer-nav{ display: flex; gap: 1.5rem; margin-bottom: 1.4rem; }
-.footer-nav a{ text-decoration: none; font-size: 0.9rem; color: var(--ink-soft); }
+.footer-nav{
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-bottom: 1.4rem;
+}
+.footer-nav a{
+  color: var(--ink-soft);
+  display: inline-flex;
+  transition: color 0.2s ease;
+}
 .footer-nav a:hover{ color: var(--gold); }
-.footer-copy{ font-size: 0.82rem; color: var(--sage); margin: 0; }
+.footer-nav svg{
+  width: 20px;
+  height: 20px;
+  display: block;
+}
+.footer-copy{ font-size: 0.82rem; color: var(--sage); margin: 0; } 
