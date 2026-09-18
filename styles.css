@@ -2,15 +2,15 @@
    Built in Silk — tokens
 --------------------------------------------------- */
 :root{
-  --ink: #1B1815;
-  --ink-soft: #3A342E;
-  --paper: #F1E9DA;
-  --paper-deep: #E7DCC6;
-  --silk: #C98A96;
-  --silk-deep: #A9636F;
-  --gold: #93763B;
-  --sage: #6B7261;
-  --line: rgba(27,24,21,0.14);
+  --ink: #171318;
+  --ink-soft: rgba(23,19,24,0.78);
+  --paper: #F4EFE8;
+  --paper-deep: #E9E0D2;
+  --silk: #CBB6CE;
+  --silk-deep: #A94E8E;
+  --gold: #6D315F;
+  --sage: #6D315F;
+  --line: rgba(23,19,24,0.14);
 
   --serif: "Fraunces", ui-serif, Georgia, serif;
   --sans: "Work Sans", ui-sans-serif, system-ui, sans-serif;
@@ -93,7 +93,7 @@ a:focus-visible, button:focus-visible, input:focus-visible{
   cursor: pointer;
   transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
 }
-.btn:hover{ background: var(--gold); border-color: var(--gold); }
+.btn:hover{ background: var(--silk-deep); border-color: var(--silk-deep); }
 .btn-small{ padding: 0.55em 1.2em; font-size: 0.85rem; }
 .btn-ghost{
   background: transparent;
@@ -108,7 +108,7 @@ a:focus-visible, button:focus-visible, input:focus-visible{
 .site-header{
   position: sticky;
   top: 0;
-  background: rgba(241,233,218,0.92);
+  background: rgba(244,239,232,0.92);
   backdrop-filter: blur(6px);
   border-bottom: 1px solid var(--line);
   z-index: 20;
@@ -152,7 +152,7 @@ a:focus-visible, button:focus-visible, input:focus-visible{
   left: 0; right: 100%;
   bottom: 0;
   height: 1px;
-  background: var(--gold);
+  background: var(--silk-deep);
   transition: right 0.25s ease;
 }
 .main-nav a:hover::after{ right: 0; }
@@ -179,7 +179,7 @@ a:focus-visible, button:focus-visible, input:focus-visible{
   background: var(--paper);
   border: 1px solid var(--line);
   min-width: 220px;
-  box-shadow: 0 14px 28px rgba(27,24,21,0.10);
+  box-shadow: 0 14px 28px rgba(23,19,24,0.10);
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
@@ -204,7 +204,7 @@ a:focus-visible, button:focus-visible, input:focus-visible{
   white-space: nowrap;
 }
 .dropdown a::after{ content: none; }
-.dropdown a:hover{ color: var(--gold); background: var(--paper-deep); }
+.dropdown a:hover{ color: var(--silk-deep); background: var(--paper-deep); }
 
 /* ---------------------------------------------------
    Hero
@@ -217,7 +217,7 @@ a:focus-visible, button:focus-visible, input:focus-visible{
 .eyebrow{
   font-size: 0.85rem;
   letter-spacing: 0.04em;
-  color: var(--sage);
+  color: var(--gold);
   margin-bottom: 1.2em;
   font-weight: 500;
 }
@@ -261,7 +261,7 @@ a:focus-visible, button:focus-visible, input:focus-visible{
 .essence-join{
   font-family: var(--serif);
   font-size: 2.5rem;
-  color: var(--sage);
+  color: var(--silk);
 }
 .essence-belief{
   margin-top: 2.5rem;
@@ -294,7 +294,7 @@ a:focus-visible, button:focus-visible, input:focus-visible{
   content: "";
   position: absolute; left: 0; top: 1.05em;
   width: 8px; height: 8px;
-  background: var(--sage);
+  background: var(--silk);
 }
 .x-list li::before{
   content: "";
@@ -383,14 +383,14 @@ a:focus-visible, button:focus-visible, input:focus-visible{
   font-weight: 500;
   scroll-margin-top: 6rem;
 }
-.room-note{ color: var(--sage); font-style: italic; font-family: var(--serif); }
+.room-note{ color: var(--gold); font-style: italic; font-family: var(--serif); }
 
 /* ---------------------------------------------------
    Subscribe
 --------------------------------------------------- */
 .subscribe{ padding: clamp(3rem, 7vw, 5rem) 0; background: var(--ink); color: var(--paper); }
 .subscribe h2{ color: var(--paper); }
-.subscribe-copy p{ color: rgba(241,233,218,0.82); }
+.subscribe-copy p{ color: rgba(244,239,232,0.82); }
 .subscribe-grid{
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -409,17 +409,17 @@ a:focus-visible, button:focus-visible, input:focus-visible{
   flex: 1;
   min-width: 200px;
   padding: 0.85em 1em;
-  border: 1px solid rgba(241,233,218,0.4);
+  border: 1px solid rgba(244,239,232,0.4);
   background: transparent;
   color: var(--paper);
   font-family: var(--sans);
   font-size: 0.95rem;
   border-radius: 2px;
 }
-.form-row input::placeholder{ color: rgba(241,233,218,0.45); }
-.form-row .btn{ background: var(--silk); border-color: var(--silk); color: var(--ink); font-weight: 600; }
-.form-row .btn:hover{ background: var(--gold); border-color: var(--gold); color: var(--paper); }
-.form-note{ margin-top: 1rem; font-style: italic; font-family: var(--serif); color: rgba(241,233,218,0.65); font-size: 0.95rem; }
+.form-row input::placeholder{ color: rgba(244,239,232,0.45); }
+.form-row .btn{ background: var(--silk-deep); border-color: var(--silk-deep); color: var(--paper); font-weight: 600; }
+.form-row .btn:hover{ background: var(--silk); border-color: var(--silk); color: var(--ink); }
+.form-note{ margin-top: 1rem; font-style: italic; font-family: var(--serif); color: rgba(244,239,232,0.65); font-size: 0.95rem; }
 
 /* ---------------------------------------------------
    Footer
@@ -443,10 +443,10 @@ a:focus-visible, button:focus-visible, input:focus-visible{
   display: inline-flex;
   transition: color 0.2s ease;
 }
-.footer-nav a:hover{ color: var(--gold); }
+.footer-nav a:hover{ color: var(--silk-deep); }
 .footer-nav svg{
   width: 20px;
   height: 20px;
   display: block;
 }
-.footer-copy{ font-size: 0.82rem; color: var(--sage); margin: 0; } 
+.footer-copy{ font-size: 0.82rem; color: var(--gold); margin: 0; } 
