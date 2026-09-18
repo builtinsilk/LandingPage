@@ -209,6 +209,214 @@ a:focus-visible, button:focus-visible, input:focus-visible{
 /* ---------------------------------------------------
    Hero
 --------------------------------------------------- */
+:root{
+  --ink: #171318;
+  --ink-soft: rgba(23,19,24,0.78);
+  --paper: #F4EFE8;
+  --paper-deep: #E9E0D2;
+  --silk: #CBB6CE;
+  --silk-deep: #A94E8E;
+  --gold: #6D315F;
+  --sage: #6D315F;
+  --line: rgba(23,19,24,0.14);
+
+  --serif: "Fraunces", ui-serif, Georgia, serif;
+  --sans: "Work Sans", ui-sans-serif, system-ui, sans-serif;
+
+  --max: 1180px;
+  --gutter: clamp(1.25rem, 4vw, 3rem);
+}
+
+*, *::before, *::after{ box-sizing: border-box; }
+html{ scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior: auto; }
+  *{ animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+}
+
+body{
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap{
+  max-width: var(--max);
+  margin: 0 auto;
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
+}
+
+h1, h2, h3{
+  font-family: var(--serif);
+  font-weight: 500;
+  line-height: 1.08;
+  margin: 0 0 0.5em;
+  color: var(--ink);
+}
+
+h1{ font-size: clamp(2.6rem, 6vw, 4.6rem); font-weight: 400; letter-spacing: -0.01em; }
+h1 em{ font-style: italic; color: var(--silk-deep); }
+h2{ font-size: clamp(1.7rem, 3.4vw, 2.4rem); }
+h3{ font-size: 1.15rem; margin-bottom: 0.3em; }
+
+p{ margin: 0 0 1em; max-width: 62ch; }
+
+a{ color: inherit; }
+
+.skip-link{
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 0.75em 1.25em;
+  z-index: 100;
+}
+.skip-link:focus{ left: var(--gutter); top: 1rem; }
+
+a:focus-visible, button:focus-visible, input:focus-visible{
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
+/* ---------------------------------------------------
+   Buttons
+--------------------------------------------------- */
+.btn{
+  display: inline-block;
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 0.85em 1.6em;
+  border-radius: 2px;
+  border: 1px solid var(--ink);
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+.btn:hover{ background: var(--silk-deep); border-color: var(--silk-deep); }
+.btn-small{ padding: 0.55em 1.2em; font-size: 0.85rem; }
+.btn-ghost{
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--ink);
+}
+.btn-ghost:hover{ background: var(--ink); color: var(--paper); }
+
+/* ---------------------------------------------------
+   Header
+--------------------------------------------------- */
+.site-header{
+  position: sticky;
+  top: 0;
+  background: rgba(244,239,232,0.92);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--line);
+  z-index: 20;
+}
+.header-inner{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 1.1rem;
+  padding-bottom: 1.1rem;
+  gap: 1.5rem;
+}
+.wordmark{
+  font-family: var(--serif);
+  font-size: 1.25rem;
+  text-decoration: none;
+  color: var(--ink);
+  white-space: nowrap;
+}
+.wordmark em{ font-style: italic; color: var(--silk-deep); }
+.wordmark.small{ font-size: 1.4rem; }
+
+.main-nav{
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  flex: 1;
+  justify-content: center;
+}
+.main-nav a{
+  text-decoration: none;
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--ink-soft);
+  position: relative;
+  padding-bottom: 3px;
+}
+.main-nav a::after{
+  content: "";
+  position: absolute;
+  left: 0; right: 100%;
+  bottom: 0;
+  height: 1px;
+  background: var(--silk-deep);
+  transition: right 0.25s ease;
+}
+.main-nav a:hover::after{ right: 0; }
+
+@media (max-width: 780px){
+  .main-nav{ display: none; }
+}
+
+/* --- Nav dropdowns (Signatures / The Silk Room) --- */
+.nav-item{
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.dropdown{
+  list-style: none;
+  margin: 0;
+  padding: 0.5rem 0;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(6px);
+  background: var(--paper);
+  border: 1px solid var(--line);
+  min-width: 220px;
+  box-shadow: 0 14px 28px rgba(23,19,24,0.10);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+  z-index: 30;
+}
+
+.nav-item:hover .dropdown,
+.nav-item:focus-within .dropdown{
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+.dropdown li{ border: none; }
+
+.dropdown a{
+  display: block;
+  padding: 0.6em 1.3em;
+  font-size: 0.86rem;
+  font-weight: 400;
+  color: var(--ink-soft);
+  white-space: nowrap;
+}
+.dropdown a::after{ content: none; }
+.dropdown a:hover{ color: var(--silk-deep); background: var(--paper-deep); }
+
+/* ---------------------------------------------------
+   Hero
+--------------------------------------------------- */
 .hero{ padding: clamp(3rem, 8vw, 6rem) 0 clamp(2.5rem, 6vw, 4rem); }
 .hero-grid{
   max-width: 720px;
@@ -449,4 +657,86 @@ a:focus-visible, button:focus-visible, input:focus-visible{
   height: 20px;
   display: block;
 }
-.footer-copy{ font-size: 0.82rem; color: var(--gold); margin: 0; } 
+.footer-copy{ font-size: 0.82rem; color: var(--gold); margin: 0; }
+
+/* ---------------------------------------------------
+   Franchise pages — shared (e.g. The Women of Silk)
+--------------------------------------------------- */
+.franchise-breadcrumb{
+  padding: 1.4rem 0 0;
+}
+.franchise-breadcrumb a{
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  text-decoration: none;
+  border-bottom: 1px solid var(--line);
+}
+.franchise-breadcrumb a:hover{ color: var(--silk-deep); border-color: var(--silk-deep); }
+
+.wos-criteria{ padding: clamp(2.5rem, 6vw, 4rem) 0; border-top: 1px solid var(--line); }
+.wos-criteria .check-list{ max-width: 640px; }
+
+.wos-grid-wrap{ padding: clamp(3rem, 7vw, 5rem) 0; background: var(--paper-deep); }
+.wos-grid{
+  list-style: none;
+  margin: 2rem 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+@media (max-width: 900px){ .wos-grid{ grid-template-columns: 1fr 1fr; } }
+@media (max-width: 600px){ .wos-grid{ grid-template-columns: 1fr; } }
+.wos-card{
+  background: var(--paper);
+  border: 1px solid var(--line);
+  padding: 1.6rem;
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.wos-card .wos-card-label{
+  font-family: var(--serif);
+  font-style: italic;
+  color: var(--silk-deep);
+  font-size: 1.1rem;
+}
+.wos-card p{ color: var(--ink-soft); font-size: 0.92rem; margin: 0.8em 0 0; }
+
+/* ---------------------------------------------------
+   The Silk Room page
+--------------------------------------------------- */
+.room-cards-wrap{ padding: clamp(3rem, 7vw, 5rem) 0; }
+.room-cards{
+  list-style: none;
+  margin: 2rem 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+@media (max-width: 900px){ .room-cards{ grid-template-columns: 1fr 1fr; } }
+@media (max-width: 600px){ .room-cards{ grid-template-columns: 1fr; } }
+.room-card{
+  background: var(--paper);
+  border: 1px solid var(--line);
+  padding: 1.6rem;
+  scroll-margin-top: 6rem;
+}
+.room-card .room-card-tag{
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  color: var(--gold);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.room-card h3{
+  margin-top: 0.4em;
+  font-style: italic;
+  color: var(--silk-deep);
+}
+.room-card p{ color: var(--ink-soft); font-size: 0.92rem; margin: 0; }
+
+.room-waitlist{ padding: clamp(2.5rem, 6vw, 4rem) 0; border-top: 1px solid var(--line); text-align: center; }
+.room-waitlist p{ margin: 0 auto 1.4rem; } 
